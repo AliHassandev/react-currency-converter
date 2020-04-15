@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 
-const CurrencyRow = () => {
+const CurrencyRow = (props) => {
+
+    const { currencyOptions,
+            selectedCurrency
+         } = props;
     return ( 
 
             <div>
                 <input className="input" type="number" />
-                <div class="select">
-                    <select name="slct" id="slct">
-                        <option selected disabled>Choose Currency</option>
-                        <option value="1">USD</option>
+                <div className="select">
+                    <select name="slct" id="slct" value={selectedCurrency}>
+                        {currencyOptions.map(option => (
+                            <option key={option} value={option} >{option}</option>
+                            ))}
                     </select>
                 </div>
             </div>
      );
 }
- 
+
 export default CurrencyRow;
